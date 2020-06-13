@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Blogging Website</title>
+    <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+<div class="topnav">
+    {%if user.is_authenticated %}
+  <a class="bigbrand" href="{% url 'mysite:home' %}">Home</a>
+  <a href="{% url 'mysite:PostCreate' %}">New Post</a>
+  <a class="navbar-right rightbrand" href="{% url 'mysite:user_logout' %}">Logout</a>
+    <p class="navbar-right rightbrand"> Welcome :{{user.username}}</p>
+    {% else %}
+ <a href="{% url 'mysite:home' %}">Home</a>
+  <a href="{% url 'mysite:registration' %}">Registration</a>
+    {% endif %}
+</div>
+</div>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>Title:{{ post.title }}</h1>
+    <h1>Description:</h1>
+    <p>{{ post.text }}<p>
+    <p>Published At:{{ post.created_date|date:"d M Y" }} </p>
+{% ifequal request.user post.author %}
+<a href="{% url 'mysite:PostEdit' pk=post.pk %}">Edit</a>
+<a href="{% url 'mysite:PostDelete' pk=post.pk %}">Delete</a>
+{% endifequal %}
+</div>
+{% endblock %}

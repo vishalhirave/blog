@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% ifequal request.user post.author %}
+
+<div class="container">
+<form method="POST">
+   {% csrf_token %}
+<h1>Are you sure,you want to delete {{object.title}} ?</h1>
+<input type="submit" value="Delete">
+<a href="{% url 'mysite:PostList' %}">Cancle</a>
+</form>
+</div>
+{% else %}
+Not Autherized
+{% endifequal %}
+{% endblock %}
